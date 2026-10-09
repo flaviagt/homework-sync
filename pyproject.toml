@@ -1,0 +1,9 @@
+[project]
+name = "homework-sync"
+version = "1.0.0"
+description = "Daily sync of homework and readings from Canvas and course websites into Notion."
+requires-python = ">=3.11"
+license = "MIT"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

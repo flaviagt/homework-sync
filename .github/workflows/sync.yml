@@ -1,0 +1,87 @@
+name: Sync homework to Notion
+
+on:
+  schedule:
+    # GitHub cron runs in UTC and ignores daylight saving time, so schedule
+    # both candidates and let the `gate` job keep whichever one is 6:30 a.m.
+    # in Los Angeles today.
+    - cron: "30 13 * * *"  # 6:30 a.m. PDT (March–November)
+    - cron: "30 14 * * *"  # 6:30 a.m. PST (November–March)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: print what would sync without writing to Notion"
+        type: boolean
+        default: false
+
+concurrency:
+  group: homework-sync
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        env:
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          offset=$(TZ=America/Los_Angeles date +%z)
+          if [ "$EVENT" != "schedule" ] \
+             || { [ "$offset" = "-0700" ] && [ "$SCHEDULE" = "30 13 * * *" ]; } \
+             || { [ "$offset" = "-0800" ] && [ "$SCHEDULE" = "30 14 * * *" ]; }; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Not 6:30 a.m. in Los Angeles for this trigger (UTC offset $offset); skipping."
+          fi
+
+  sync:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write  # to commit state/sync_state.json
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Sync
+        env:
+          CANVAS_ICS_URL: ${{ secrets.CANVAS_ICS_URL }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python -m homework_sync --dry-run
+          else
+            python -m homework_sync
+          fi
+
+      # Runs even if one source failed, so successful writes are remembered.
+      - name: Commit sync state
+        if: ${{ !cancelled() && inputs.dry_run != true }}
+        run: |
+          [ -d state ] || { echo "No state written."; exit 0; }
+          git add state/
+          if git diff --cached --quiet; then
+            echo "State unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update sync state"
+          git pull --rebase
+          git push

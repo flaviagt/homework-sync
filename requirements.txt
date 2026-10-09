@@ -1,0 +1,8 @@
+requests>=2.32,<3
+icalendar>=6,<8
+beautifulsoup4>=4.12,<5
+lxml>=5,<7
+python-dotenv>=1,<2
+pydantic>=2,<3
+# Only used when ANTHROPIC_API_KEY is set (Claude fallback for course sites).
+anthropic>=1.8,<2

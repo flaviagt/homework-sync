@@ -1,0 +1,65 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Test Student Calendar (Canvas)
+X-WR-CALDESC:Calendar events for the user\, Test Student
+BEGIN:VEVENT
+CLASS:PUBLIC
+DTSTAMP:20260927T120000Z
+DTSTART;VALUE=DATE;VALUE=DATE:20261013
+SEQUENCE:0
+SUMMARY:Homework #1: Satellite imagery and poverty prediction [DSC190_FA26_003]
+UID:event-assignment-1001
+URL:https://canvas.example.edu/calendar?include_contexts=course_42&month=10&year=2026#assignment_1001
+END:VEVENT
+BEGIN:VEVENT
+CLASS:PUBLIC
+DTSTAMP:20260927T120000Z
+DTSTART:20261116T203000Z
+DTEND:20261116T203000Z
+SEQUENCE:0
+SUMMARY:Assignment: Ethics Simulation Advance Preparation [MGT016_FA26_005]
+UID:event-assignment-1002
+URL:https://canvas.example.edu/calendar?include_contexts=course_77&month=11&year=2026#assignment_1002
+END:VEVENT
+BEGIN:VEVENT
+CLASS:PUBLIC
+DTSTAMP:20260927T120000Z
+DTSTART;VALUE=DATE;VALUE=DATE:20261012
+SEQUENCE:0
+SUMMARY:Assessment: Quiz #1 (Ethics Definitions\, Ethical GPS) [MGT016_FA26_005]
+UID:event-assignment-1003
+URL:https://canvas.example.edu/calendar?include_contexts=course_77&month=10&year=2026#assignment_1003
+END:VEVENT
+BEGIN:VEVENT
+CLASS:PUBLIC
+DTSTAMP:20260927T120000Z
+DTSTART;VALUE=DATE;VALUE=DATE:20261112
+SEQUENCE:0
+SUMMARY:Project milestone #2: Midterm report  [DSC190_FA26_003]
+UID:event-assignment-1004
+URL:https://canvas.example.edu/calendar?include_contexts=course_42&month=11&year=2026#assignment_1004
+END:VEVENT
+BEGIN:VEVENT
+CLASS:PUBLIC
+DTSTAMP:20260927T120000Z
+DTSTART:20261008T220000Z
+DTEND:20261008T232000Z
+LOCATION:WLH 2005
+SEQUENCE:0
+SUMMARY:Lectures [CSE151B_FA26_001]
+UID:event-calendar-event-2001
+URL:https://canvas.example.edu/calendar?include_contexts=course_99&month=10&year=2026#calendar_event_2001
+END:VEVENT
+BEGIN:VEVENT
+CLASS:PUBLIC
+DTSTAMP:20260927T120000Z
+DTSTART:20261020T210000Z
+DTEND:20261020T222000Z
+SEQUENCE:0
+SUMMARY:Midterm Exam [CSE151B_FA26_001]
+UID:event-calendar-event-2002
+URL:https://canvas.example.edu/calendar?include_contexts=course_99&month=10&year=2026#calendar_event_2002
+END:VEVENT
+END:VCALENDAR
