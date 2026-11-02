@@ -35,13 +35,13 @@ def test_claude_output_becomes_items(site):
         ExtractedItem(title="Read chapter 4", type="reading", due_date="not a date",
                       release_date=None, source_url="javascript:alert(1)"),
     ])
-    items = ClaudeExtractor(client, model="claude-opus-5").extract("page text", site("cse151b"), TODAY)
+    items = ClaudeExtractor(client, model="claude-opus-5").extract("page text", site("capstone"), TODAY)
 
     hw, reading = items
     assert (hw.type, hw.due, hw.link) == (ItemType.HOMEWORK, date(2026, 10, 26), "https://example.edu/hw3")
     assert reading.type == ItemType.READING
     assert reading.due is None  # invalid dates are dropped, not guessed
-    assert reading.link == site("cse151b").url  # non-http links are ignored
+    assert reading.link == site("capstone").url  # non-http links are ignored
     assert messages.kwargs["output_format"] is Extraction
     assert messages.kwargs["fallbacks"] == "default"
 
@@ -49,12 +49,12 @@ def test_claude_output_becomes_items(site):
 def test_refusal_raises(site):
     client, _ = fake_client(stop_reason="refusal")
     with pytest.raises(LLMExtractionError):
-        ClaudeExtractor(client, model="claude-opus-5").extract("text", site("cse151b"), TODAY)
+        ClaudeExtractor(client, model="claude-opus-5").extract("text", site("capstone"), TODAY)
 
 
 def test_fallbacks_only_sent_for_models_that_support_them(site):
     client, messages = fake_client()
-    ClaudeExtractor(client, model="claude-haiku-4-5").extract("text", site("cse151b"), TODAY)
+    ClaudeExtractor(client, model="claude-haiku-4-5").extract("text", site("capstone"), TODAY)
     assert "fallbacks" not in messages.kwargs
 
 
@@ -89,7 +89,7 @@ def test_decode_reads_rows_added_by_hand():
     schema = Schema.validate(notion_properties(), PropertyNames(), "Not started")
     manual_row = {"id": "p", "properties": {
         "What": {"type": "title", "title": [{"plain_text": "HW1"}]},
-        "Course": {"type": "select", "select": {"name": "CSE 151B"}},
+        "Course": {"type": "select", "select": {"name": "DSC 190"}},
         "Type": {"type": "select", "select": None},
         "Due": {"type": "date", "date": {"start": "2026-10-05"}},
         "Link": {"type": "url", "url": None},
@@ -97,7 +97,7 @@ def test_decode_reads_rows_added_by_hand():
     }}
     page = schema.decode(manual_row)
     assert page.source_id == ""
-    assert page.values == {"title": "HW1", "course": "CSE 151B", "type": None,
+    assert page.values == {"title": "HW1", "course": "DSC 190", "type": None,
                            "due": "2026-10-05", "link": None}
 
 

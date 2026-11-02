@@ -3,7 +3,7 @@ from datetime import date
 import pytest
 
 from homework_sync.models import ItemType
-from homework_sync.sites import SiteError, SiteResult, collect_site, capstone, cse151b
+from homework_sync.sites import SiteError, SiteResult, collect_site, capstone
 from homework_sync.sites.base import LayoutChanged, page_hash, page_text
 from homework_sync.state import SiteSnapshot, item_to_dict
 
@@ -12,55 +12,6 @@ from .conftest import TODAY
 
 def by_title(items):
     return {i.title: i for i in items}
-
-
-# --- CSE 151B -------------------------------------------------------------------------
-
-@pytest.fixture
-def cse(fixture_text, site):
-    return by_title(cse151b.parse(fixture_text("cse151b.html"), site("cse151b"), TODAY))
-
-
-def test_cse151b_combined_assignments_are_split(cse):
-    assert cse["HW1"].due == cse["PA1"].due == date(2026, 10, 5)
-    assert cse["HW2"].link == "https://colab.research.google.com/drive/pa2"
-
-
-def test_cse151b_ungraded_and_links(cse):
-    assert cse["HW0 (ungraded)"].due is None
-    assert cse["PA0 (ungraded)"].link == "https://colab.research.google.com/drive/pa0"
-    # No link on the page → the course page itself.
-    assert cse["HW1"].link == "https://sadhikamalladi.github.io/cs151b-fa26/index.html"
-
-
-def test_cse151b_quizzes_readings_milestones_and_exams(cse):
-    assert cse["Quiz 1"].type == ItemType.QUIZ and cse["Quiz 1"].due == date(2026, 10, 5)
-    reading = cse["Reading: Goodfellow ch. 6"]
-    assert reading.type == ItemType.READING
-    assert reading.due == date(2026, 10, 6)  # the lecture it's for
-    assert cse["Project proposal"].due == date(2026, 10, 16)
-    assert cse["Midterm"].type == ItemType.TEST and cse["Midterm"].due == date(2026, 10, 20)
-
-
-def test_cse151b_skips_non_items(cse):
-    assert "Foundations clinic" not in " ".join(cse)  # a discussion, not a quiz
-    assert "Midterm review" not in cse                 # a lecture, not an exam
-    assert all(i.course == "CSE 151B" for i in cse.values())
-
-
-def test_cse151b_ids_survive_a_link_being_added(fixture_text, site):
-    html = fixture_text("cse151b.html")
-    before = by_title(cse151b.parse(html, site("cse151b"), TODAY))["HW1"]
-    html = html.replace('<span class="event">HW1 &amp; PA1</span>',
-                        '<span class="event">HW1 (<a href="https://example.edu/hw1.pdf">PDF</a>) &amp; PA1</span>')
-    after = by_title(cse151b.parse(html, site("cse151b"), TODAY))["HW1"]
-    assert after.link == "https://example.edu/hw1.pdf"
-    assert after.source_id == before.source_id
-
-
-def test_cse151b_layout_change_is_detected(site):
-    with pytest.raises(LayoutChanged):
-        cse151b.parse("<html><body><p>Schedule coming soon</p></body></html>", site("cse151b"), TODAY)
 
 
 # --- DSC Capstone ---------------------------------------------------------------------
@@ -84,6 +35,11 @@ def test_capstone_assignment_due_dates(cap):
     # Explicit dates win.
     assert cap["Participation Assignment 1 due Sunday, Oct 18"].due == date(2026, 10, 18)
     assert cap["Checkpoint 1 due Oct 26"].due == date(2026, 10, 26)
+
+
+def test_capstone_layout_change_is_detected(site):
+    with pytest.raises(LayoutChanged):
+        capstone.parse("<html><body><p>Schedule coming soon</p></body></html>", site("capstone"), TODAY)
 
 
 def test_capstone_skips_live_sessions(cap):
@@ -116,7 +72,7 @@ BROKEN = "<html><body><h2>Week 1</h2><p>HW1 due Oct 5</p></body></html>"
 
 def test_layout_change_without_api_key_is_an_error(site):
     with pytest.raises(SiteError, match="ANTHROPIC_API_KEY"):
-        collect_site(site("cse151b"), today=TODAY, session=FakeSession(BROKEN), previous=None, llm=None)
+        collect_site(site("capstone"), today=TODAY, session=FakeSession(BROKEN), previous=None, llm=None)
 
 
 def test_layout_change_uses_claude(site, cap):
@@ -141,3 +97,19 @@ def test_parser_result_is_used_when_layout_is_fine(site, fixture_text):
     result = collect_site(site("capstone"), today=TODAY, session=FakeSession(fixture_text("capstone.html")),
                           previous=None, llm=llm)
     assert isinstance(result, SiteResult) and result.method == "parser" and llm.calls == 0
+
+
+LIVE_LAYOUT = """<table><thead><tr><th>Week<th colspan="2">Methodology<th>Domain<th>Project<tbody>
+<tr><td>4<td><a href="lessons/04">Effective Communication</a><br />featuring Prof. Smarr<br /><a href="https://gs/ma2">MA 2 (due Oct. 26th)</a><td><td><td>
+<tr><td>5<td><a href="lessons/05">Using Git</a><br /><a href="https://gs/ma3">MA 3 (due Nov. 2nd)</a><td><td>As before, Participation questions are due Sunday<td>
+<tr><td>6<td><a href="lessons/06">Docker</a><td><td><td>
+</table>"""
+
+
+def test_capstone_dates_weeks_from_their_assignments(site):
+    items = by_title(capstone.parse(LIVE_LAYOUT, site("capstone"), date(2026, 11, 1)))
+    assert items["MA 2 (due Oct. 26th)"].due == date(2026, 10, 26)        # "Oct. 26th" is read
+    assert items["Effective Communication"].due == date(2026, 10, 19)     # released a week earlier
+    assert items["Using Git"].due == date(2026, 10, 26)
+    assert items["Docker"].due == date(2026, 11, 2)                       # undated week, counted on
+    assert not any(t.startswith(("As before", "featuring")) for t in items)

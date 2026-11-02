@@ -14,7 +14,6 @@ Every morning before class, a GitHub Action collects new homework, quizzes, exam
 flowchart LR
   subgraph Sources
     A["Canvas calendar feed (.ics)"]
-    B["CSE 151B site (HTML)"]
     C["DSC Capstone site (HTML)"]
   end
 
@@ -30,7 +29,6 @@ flowchart LR
   N[("Notion database")]
 
   A --> P1 --> D
-  B --> P2
   C --> P2
   P2 --> D
   P2 -. "layout changed" .-> L --> D
@@ -123,7 +121,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
 cp .env.example secrets.env        # fill in; secrets.env is gitignored
 python -m homework_sync --dry-run  # prints what would change, writes nothing
-python -m homework_sync --only cse151b,capstone --dry-run
+python -m homework_sync --only capstone --dry-run
 pytest
 ```
 
@@ -132,12 +130,11 @@ Example dry-run output (illustrative):
 ```text
 Sources
   canvas     25 items via ics
-  cse151b    5 items via parser, 2 new since last run
-  capstone   2 items via parser
+  capstone   13 items via parser, 2 new since last run
 
-Notion: would create 3, update 1; 28 already up to date
-  + [CSE 151B] Homework: HW2 — due Mon Oct 19
-  + [CSE 151B] Homework: PA2 — due Mon Oct 19
+Notion: would create 3, update 1; 41 already up to date
+  + [MGT 16] Quiz: Quiz #2 (Ethics Definitions, Ethical GPS and Fudge Factor) — due Mon Nov 02
+  + [DSC Capstone] Homework: MA 3 (due Nov. 2nd)
   + [DSC Capstone] Reading: Docker and Environments — due Mon Oct 12
   ~ [DSC 190] Homework: Homework #2: Mobility and mobile phone metadata — due Wed Oct 28
       due: '2026-10-27' → '2026-10-28'

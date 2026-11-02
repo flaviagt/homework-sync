@@ -121,7 +121,7 @@ def test_row_typed_in_by_hand_is_not_duplicated():
 
 def test_same_item_from_another_source_is_not_duplicated():
     # Canvas was down yesterday, so the course-website copy of HW1 was created.
-    from_site = page_for(make_item(source_id="site-abc", title="HW1", source="cse151b"))
+    from_site = page_for(make_item(source_id="site-abc", title="HW1", source="capstone"))
     from_canvas = make_item(source_id="event-assignment-7", title="Homework #1")
     p = plan([from_canvas], [from_site])
     assert not p.creates and p.skipped_similar[0][1] is from_site

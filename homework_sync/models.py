@@ -51,7 +51,7 @@ _TEST = re.compile(r"\b(midterm|final exam|exam)\b", re.I)
 # "Midterm report" and "Midterm review" mention an exam but aren't one.
 _NOT_AN_EXAM = re.compile(
     r"\b(report|paper|project|proposal|presentation|essay|milestone|homework|assignment|"
-    r"write-?up|poster|review|prep|preparation|solutions?|recap)\b", re.I)
+    r"write-?up|poster|review|prep|preparation|solutions?|recap|feedback|form|survey)\b", re.I)
 _QUIZ = re.compile(r"\bquiz(zes)?\b", re.I)
 _READING = re.compile(r"^\s*(pre-?)?(read|reading|readings)\b", re.I)
 

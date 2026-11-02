@@ -6,7 +6,7 @@ from homework_sync.dedup import drop_site_duplicates_of_canvas, unique_by_source
 from homework_sync.models import Item, ItemType, canonical_code, site_source_id, titles_match
 
 
-def item(title, course="CSE 151B", due=date(2026, 10, 5), source_id=None, source="canvas"):
+def item(title, course="DSC 190", due=date(2026, 10, 5), source_id=None, source="canvas"):
     return Item(source_id=source_id or title, title=title, course=course,
                 type=ItemType.HOMEWORK, due=due, source=source)
 
@@ -36,15 +36,15 @@ def test_titles_match(a, b, same):
 
 def test_site_item_already_in_canvas_is_dropped():
     canvas = [item("Homework #1: Backprop")]
-    site = [item("HW1", source="cse151b"), item("PA1", source="cse151b")]
+    site = [item("HW1", source="capstone"), item("PA1", source="capstone")]
     kept, dropped = drop_site_duplicates_of_canvas(canvas, site)
     assert [i.title for i in kept] == ["PA1"]
     assert [i.title for i in dropped] == ["HW1"]
 
 
 @pytest.mark.parametrize("site_item", [
-    item("HW1", due=date(2026, 10, 6), source="cse151b"),     # different due date
-    item("HW1", course="DSC 190", source="cse151b"),          # different course
+    item("HW1", due=date(2026, 10, 6), source="capstone"),     # different due date
+    item("HW1", course="MGT 16", source="capstone"),           # different course
 ])
 def test_similar_items_that_differ_are_kept(site_item):
     kept, _ = drop_site_duplicates_of_canvas([item("Homework #1")], [site_item])

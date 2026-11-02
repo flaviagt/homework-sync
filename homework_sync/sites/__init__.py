@@ -11,14 +11,13 @@ import requests
 from ..config import SiteConfig
 from ..models import Item
 from ..state import SiteSnapshot
-from . import capstone, cse151b
+from . import capstone
 from .base import LayoutChanged, page_hash, page_text
 from .llm import ClaudeExtractor, LLMExtractionError
 
 log = logging.getLogger(__name__)
 
 PARSERS = {
-    "cse151b": cse151b.parse,
     "capstone": capstone.parse,
 }
 

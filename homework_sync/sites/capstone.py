@@ -17,6 +17,8 @@ from ..models import Item, ItemType, classify_title
 from .base import LayoutChanged, Line, RawItem, header_labels, make_items, plus_days, soup, split_lines
 
 _LIVE_SESSION = re.compile(r"^\s*live\b|\blive on\b", re.I)
+# Commentary between items, e.g. "As before, Participation questions are due Sunday…".
+_NOTE = re.compile(r"^\s*(as before|as always|note|reminder|these are|this is|featuring)\b", re.I)
 _HOMEWORK_WORDS = re.compile(
     r"\b(assignment|due|submit|checkpoint|milestone|participation|report|proposal|"
     r"presentation|deliverable|poster|write-?up)\b", re.I)
@@ -35,23 +37,59 @@ def parse(html: str, site: SiteConfig, today: date) -> list[Item]:
     for table in tables:
         labels = header_labels(table)
         body = table.find("tbody") or table
+        weeks = []  # (week number, [(column, line)], anchor date or None)
         for row in body.find_all("tr"):
             cells = row.find_all("td", recursive=False)
             if len(cells) < 2:
                 continue
-            # The row's anchor date, e.g. "Live on Monday, Oct 5".
-            anchor = first_date(row.get_text(" ", strip=True), today)
-            for label, cell in zip(labels[1:], cells[1:]):
-                for line in split_lines(cell, site.url):
-                    raw = _line_to_item(line, label, anchor, today)
-                    if raw:
-                        raws.append(raw)
+            lines = [(label, line) for label, cell in zip(labels[1:], cells[1:])
+                     for line in split_lines(cell, site.url)]
+            weeks.append((_week_number(cells[0].get_text(" ", strip=True)), lines,
+                          _row_anchor([line for _, line in lines], today)))
+        anchors = _fill_anchors([(w, a) for w, _, a in weeks])
+        for (_, lines, _), anchor in zip(weeks, anchors):
+            for label, line in lines:
+                raw = _line_to_item(line, label, anchor, today)
+                if raw:
+                    raws.append(raw)
     return make_items(raws, site)
+
+
+def _week_number(text: str) -> int | None:
+    m = re.search(r"\d+", text)
+    return int(m.group()) if m else None
+
+
+def _row_anchor(lines: list[Line], today: date) -> date | None:
+    """The Monday a week's material is released.
+
+    Prefer the live-session date ("Live on Monday, Oct 5"). Otherwise use the
+    site's rule that assignments are due a week after release: the earliest
+    "due <date>" in the row, minus 7 days.
+    """
+    for line in lines:
+        if _LIVE_SESSION.search(line.text) and (d := first_date(line.text, today)):
+            return d
+    dues = [d for line in lines if (m := _DUE_PHRASE.search(line.text))
+            for d in find_dates(m.group(1), today)]
+    return plus_days(min(dues), -7) if dues else None
+
+
+def _fill_anchors(weeks: list[tuple[int | None, date | None]]) -> list[date | None]:
+    """Give undated weeks a date counted from the nearest dated week."""
+    known = [(w, a) for w, a in weeks if w is not None and a is not None]
+    filled = []
+    for week, anchor in weeks:
+        if anchor is None and week is not None and known:
+            ref_week, ref = min(known, key=lambda k: (abs(k[0] - week), k[0]))
+            anchor = plus_days(ref, 7 * (week - ref_week))
+        filled.append(anchor)
+    return filled
 
 
 def _line_to_item(line: Line, column: str, anchor: date | None, today: date) -> RawItem | None:
     text = line.text
-    if text.lower() in _EMPTY or _LIVE_SESSION.search(text):
+    if text.lower() in _EMPTY or _LIVE_SESSION.search(text) or _NOTE.match(text):
         return None
     link = line.links[0] if line.links else None
 

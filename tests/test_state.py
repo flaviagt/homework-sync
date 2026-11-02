@@ -7,9 +7,9 @@ from homework_sync.state import SiteSnapshot, SyncState, item_from_dict, item_to
 
 
 def test_state_round_trips_and_is_deterministic(tmp_path):
-    item = Item("site-abc", "HW1", "CSE 151B", ItemType.HOMEWORK, date(2026, 10, 5), "https://x", "cse151b")
+    item = Item("site-abc", "HW1", "DSC Capstone", ItemType.HOMEWORK, date(2026, 10, 5), "https://x", "capstone")
     state = SyncState(
-        sites={"cse151b": SiteSnapshot("cse151b", "hash", "parser", [item_to_dict(item)])},
+        sites={"capstone": SiteSnapshot("capstone", "hash", "parser", [item_to_dict(item)])},
         synced={opaque("event-assignment-1"): {"title": "t"}},
     )
     path = tmp_path / "state.json"
@@ -19,7 +19,7 @@ def test_state_round_trips_and_is_deterministic(tmp_path):
     assert path.read_text() == first  # no timestamps → no spurious commits
 
     loaded = SyncState.load(path)
-    assert loaded.sites["cse151b"].to_items() == [item]
+    assert loaded.sites["capstone"].to_items() == [item]
     assert loaded.synced == state.synced
 
 

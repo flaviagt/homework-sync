@@ -14,15 +14,8 @@ backfill_days = 7
 DSC180 = "DSC Capstone"
 DSC190 = "DSC 190"
 MGT016 = "MGT 16"
-CSE151B = "CSE 151B"
 
 # Course websites with no API. `parser` names a parser in homework_sync/sites/.
-[[sites]]
-key = "cse151b"
-course = "CSE 151B"
-url = "https://sadhikamalladi.github.io/cs151b-fa26/index.html"
-parser = "cse151b"
-
 [[sites]]
 key = "capstone"
 course = "DSC Capstone"
@@ -31,7 +24,7 @@ parser = "capstone"
 
 # Gradescope courses to export (the short code shown on each course card).
 [gradescope]
-courses = ["CSE151B_FA26_001", "DSC180A_FA26_001"]
+courses = ["DSC180A_FA26_001"]
 
 # Column names in your Notion database.
 [notion.properties]

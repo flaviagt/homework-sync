@@ -7,8 +7,8 @@ ACCOUNT = """
 <div class="courseList">
   <div class="courseList--term">Fall 2026</div>
   <div class="courseList--coursesForTerm">
-    <a class="courseBox" href="/courses/111"><h3 class="courseBox--shortname">CSE151B_FA26_001</h3>
-      <div class="courseBox--name">CSE 151B - Deep Learning</div></a>
+    <a class="courseBox" href="/courses/111"><h3 class="courseBox--shortname">DSC180A_FA26_001</h3>
+      <div class="courseBox--name">DSC 180A - Data Science Project I</div></a>
   </div>
   <div class="courseList--term">Spring 2026</div>
   <div class="courseList--coursesForTerm">
@@ -33,11 +33,11 @@ COURSE_PAGE = """
 def test_courses_are_listed_with_their_term():
     courses = parse_courses(ACCOUNT)
     assert [(c.id, c.shortname, c.term) for c in courses] == [
-        ("111", "CSE151B_FA26_001", "Fall 2026"), ("222", "CSE166_SP26_A00", "Spring 2026")]
+        ("111", "DSC180A_FA26_001", "Fall 2026"), ("222", "CSE166_SP26_A00", "Spring 2026")]
 
 
 def test_assignment_rows():
-    course = Course("111", "CSE151B_FA26_001", "", "Fall 2026")
+    course = Course("111", "DSC180A_FA26_001", "", "Fall 2026")
     hw, pa, quiz = parse_assignments(COURSE_PAGE, course)
 
     assert (hw.title, hw.status) == ("HW1", "Submitted")
@@ -62,6 +62,6 @@ def test_export_rows_share_one_format():
 
     canvas_row = row("MGT 16", "Quiz #1", as_datetime(date(2026, 10, 19)), "https://canvas")
     assert (canvas_row["Due"], canvas_row["Day"], canvas_row["Status"]) == ("2026-10-19 23:59", "Mon", "")
-    undated = row("CSE 151B", "Quiz 1", None, "https://gs")
-    early = row("CSE 151B", "HW2", datetime(2026, 10, 12, 23, 59, tzinfo=LA), "https://gs", status="Submitted")
+    undated = row("DSC Capstone", "Quiz 1", None, "https://gs")
+    early = row("DSC Capstone", "HW2", datetime(2026, 10, 12, 23, 59, tzinfo=LA), "https://gs", status="Submitted")
     assert [r["Assignment"] for r in sort_rows([undated, canvas_row, early])] == ["HW2", "Quiz #1", "Quiz 1"]

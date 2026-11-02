@@ -24,7 +24,7 @@ class GradescopeError(RuntimeError):
 @dataclass(frozen=True)
 class Course:
     id: str
-    shortname: str  # e.g. "CSE151B_FA26_001"
+    shortname: str  # e.g. "DSC180A_FA26_001"
     name: str
     term: str       # e.g. "Fall 2026"
 
