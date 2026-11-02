@@ -1,0 +1,298 @@
+{
+  "sites": {
+    "capstone": {
+      "items": [
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-05",
+          "link": "https://dsc-capstone.org/2026-27/syllabus",
+          "source_id": "site-9bd243ee464b15ea",
+          "title": "Read the Syllabus",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-05",
+          "link": "https://dsc-capstone.org/2026-27/lessons/01a",
+          "source_id": "site-a5005fd200e15dd8",
+          "title": "AWS Fundamentals: S3 and EC2",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-09-27",
+          "link": "https://dsc-capstone.org/2026-27/lessons/01",
+          "source_id": "site-22b030fb404579ad",
+          "title": "Servers I: Accessing DSMLP",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-05",
+          "link": "https://dsc-capstone.org/2026-27/assignments/methodology/01",
+          "source_id": "site-37d2fb41bc5c826a",
+          "title": "MA 1 (due Oct. 5th)",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-04",
+          "link": "https://dsc-capstone.org/2026-27/",
+          "source_id": "site-03adf7cf0171f3b0",
+          "title": "PA for Week 1 due on Sunday, Oct 4th",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-04",
+          "link": "https://dsc-capstone.org/2026-27/lessons/02",
+          "source_id": "site-e937200bb6d666e1",
+          "title": "Servers II: GPUs and Background Tasks",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-12",
+          "link": "https://dsc-capstone.org/2026-27/lessons/03",
+          "source_id": "site-ea170d05be2ce8a8",
+          "title": "Software Development for Data Science",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-12",
+          "link": "https://youtu.be/iXvBzLtI5Uk",
+          "source_id": "site-91b528ff9835edfc",
+          "title": "Watch this video on command-line arguments in Python!",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-19",
+          "link": "https://dsc-capstone.org/2026-27/lessons/04",
+          "source_id": "site-313453b04f5080e0",
+          "title": "Effective Communication and Scientific Writing",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-26",
+          "link": "https://dsc-capstone.org/2026-27/assignments/methodology/02",
+          "source_id": "site-ffe8da27198e92f8",
+          "title": "MA 2 (due Oct. 26th)",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-10-26",
+          "link": "https://dsc-capstone.org/2026-27/lessons/06",
+          "source_id": "site-cf3b4fd1c955c0f5",
+          "title": "Using Git",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-02",
+          "link": "https://dsc-capstone.org/2026-27/assignments/methodology/04",
+          "source_id": "site-ebc9cc7939e05a8e",
+          "title": "MA 3 (due Nov. 2nd)",
+          "type": "Homework"
+        }
+      ],
+      "method": "parser",
+      "page_hash": "c88c3a45c18db30c"
+    }
+  },
+  "synced": {
+    "044d458590338cb4": {
+      "course": "4e525803f44db8f1",
+      "due": "af40659fc9f7a95a",
+      "link": "d692b56426fc7334",
+      "title": "7f44f6e7ea615a75",
+      "type": "0d92efc326d7e429"
+    },
+    "055f23a6bc43500e": {
+      "course": "4e525803f44db8f1",
+      "due": "e90c73e27bd79b14",
+      "link": "2d154d220a46db3d",
+      "title": "2fa8a176940a30c8",
+      "type": "0d92efc326d7e429"
+    },
+    "13a2daa03eabd127": {
+      "course": "4e525803f44db8f1",
+      "due": "b90a0e1b6b84f3d9",
+      "link": "6ce9c6e66360c6ce",
+      "title": "c8a4895d20d95b2b",
+      "type": "0d92efc326d7e429"
+    },
+    "19785ff4b099c144": {
+      "course": "f11de8fee557a13a",
+      "due": "b90a0e1b6b84f3d9",
+      "link": "c4b1017abc079ad4",
+      "title": "500d640716e20cc7",
+      "type": "0d92efc326d7e429"
+    },
+    "322b61a908d6b783": {
+      "course": "f11de8fee557a13a",
+      "due": "146a623ac4a80121",
+      "link": "9832d2f6f70418ed",
+      "title": "2cc55768fb9ebb77",
+      "type": "0d92efc326d7e429"
+    },
+    "3de95f96d234e9bf": {
+      "course": "f11de8fee557a13a",
+      "due": "7491dd33aafb5e7c",
+      "link": "846279a1558a5afb",
+      "title": "79cf0befd47e6651",
+      "type": "0d92efc326d7e429"
+    },
+    "5d9abcf6ae7b3331": {
+      "course": "4e525803f44db8f1",
+      "due": "bb2adb029f2f2ba0",
+      "link": "c1112938c949cd7d",
+      "title": "8859f60b8dfae64e",
+      "type": "03aa7dc16797a82b"
+    },
+    "5fd59621ccb12ed1": {
+      "course": "f11de8fee557a13a",
+      "due": "c10ebf63c120cc5c",
+      "link": "f0f1e5373bfca121",
+      "title": "f2fbe1d89afa3d0b",
+      "type": "0d92efc326d7e429"
+    },
+    "6652f3b0db4592a9": {
+      "course": "873f55418840b67f",
+      "due": "bf044a2c29d5517b",
+      "link": "5b61f795210f769d",
+      "title": "71a348a155b5eee9",
+      "type": "0d92efc326d7e429"
+    },
+    "7533f03e590f64c8": {
+      "course": "4e525803f44db8f1",
+      "due": "e90c73e27bd79b14",
+      "link": "906c6978179ab5c9",
+      "title": "73d843813437900d",
+      "type": "0d92efc326d7e429"
+    },
+    "7a10be99047cd815": {
+      "course": "4e525803f44db8f1",
+      "due": "50f4b0df2b7bae35",
+      "link": "d766a32c8ad29c5c",
+      "title": "257df3543b8a7a69",
+      "type": "0d92efc326d7e429"
+    },
+    "8e240f165cabacaf": {
+      "course": "f11de8fee557a13a",
+      "due": "3efe4bf19de852e6",
+      "link": "e30d5b446565c5de",
+      "title": "e845cb42b6e9b8ce",
+      "type": "0d92efc326d7e429"
+    },
+    "9548fada93049671": {
+      "course": "4e525803f44db8f1",
+      "due": "5aa6a647a19bb785",
+      "link": "a0edd55c27dacfe2",
+      "title": "b1371483e7cc4ac6",
+      "type": "03aa7dc16797a82b"
+    },
+    "9b88a4a012fb3328": {
+      "course": "4e525803f44db8f1",
+      "due": "e0b7c44611a45c9d",
+      "link": "9ee62ee2306b24f9",
+      "title": "a29311d35bff1e82",
+      "type": "03aa7dc16797a82b"
+    },
+    "a9013458752116ef": {
+      "course": "4e525803f44db8f1",
+      "due": "c9c37f3f041ea469",
+      "link": "4dc00e3eb95a43e7",
+      "title": "8030b8810c14fb17",
+      "type": "0d92efc326d7e429"
+    },
+    "accaa42208cb0453": {
+      "course": "f11de8fee557a13a",
+      "due": "5078719ef4595b8e",
+      "link": "e7ddfa09205f9407",
+      "title": "420256c7dc7070ba",
+      "type": "0d92efc326d7e429"
+    },
+    "ad5778c006bf1219": {
+      "course": "f11de8fee557a13a",
+      "due": "7491dd33aafb5e7c",
+      "link": "3d6013cb409d7a02",
+      "title": "bb97f3317a8745bf",
+      "type": "0d92efc326d7e429"
+    },
+    "ae4df9b675d438e0": {
+      "course": "f11de8fee557a13a",
+      "due": "c0fbeb5078d4b7e2",
+      "link": "c477ce6e816bfdfa",
+      "title": "8f26e9e278cca1e4",
+      "type": "0d92efc326d7e429"
+    },
+    "b37e69eb52977cbd": {
+      "course": "f11de8fee557a13a",
+      "due": "749763b3c8999e0b",
+      "link": "a1ee67bb2fabecdd",
+      "title": "b4b4daa6a52a997c",
+      "type": "0d92efc326d7e429"
+    },
+    "b453b92728121d90": {
+      "course": "4e525803f44db8f1",
+      "due": "86009cc361823fe7",
+      "link": "d6d45e9af360e518",
+      "title": "852c6a3aa813f806",
+      "type": "0d92efc326d7e429"
+    },
+    "d970c2ed8083d22e": {
+      "course": "4e525803f44db8f1",
+      "due": "fc72dc4e5cf7e6f0",
+      "link": "5e9f4928e6306ccb",
+      "title": "267483e9d988b317",
+      "type": "0d92efc326d7e429"
+    },
+    "dc10c802a7c0ef8e": {
+      "course": "f11de8fee557a13a",
+      "due": "089e3699fe7f6a61",
+      "link": "d99b797f0e4d74cc",
+      "title": "05dbad58e3919aca",
+      "type": "0d92efc326d7e429"
+    },
+    "e03529f0633c66d2": {
+      "course": "873f55418840b67f",
+      "due": "bf044a2c29d5517b",
+      "link": "bd39751ddeb9de8d",
+      "title": "8de3c39f1df7fdf7",
+      "type": "463816d07097e1a7"
+    },
+    "ed3f27e9efdb89f8": {
+      "course": "4e525803f44db8f1",
+      "due": "50f4b0df2b7bae35",
+      "link": "7fbb8cc7fdb4aafc",
+      "title": "d1822ba4073d1e7f",
+      "type": "0d92efc326d7e429"
+    },
+    "f177f049da11ef13": {
+      "course": "4e525803f44db8f1",
+      "due": "d53844af3594c81b",
+      "link": "493957ca7f3d833a",
+      "title": "22e2e6d3ec91c109",
+      "type": "0d92efc326d7e429"
+    },
+    "f8d88b9a2947e7a4": {
+      "course": "4e525803f44db8f1",
+      "due": "7aa86fb75bec8ea5",
+      "link": "0e84bc16354cfccc",
+      "title": "bd235430fba3393e",
+      "type": "0d92efc326d7e429"
+    },
+    "fc22e7143ce4de8b": {
+      "course": "873f55418840b67f",
+      "due": "bb2adb029f2f2ba0",
+      "link": "e92759a1a9e616b0",
+      "title": "dee42b83f1268b9a",
+      "type": "0d92efc326d7e429"
+    }
+  },
+  "version": 1
+}
