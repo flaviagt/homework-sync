@@ -97,10 +97,26 @@
           "source_id": "site-ebc9cc7939e05a8e",
           "title": "MA 3 (due Nov. 2nd)",
           "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-09",
+          "link": "https://dsc-capstone.org/2026-27/assignments/methodology/05",
+          "source_id": "site-71e1c133a9a70b1a",
+          "title": "LaTeX, Markdown, and GitHub Pages (MA 4 due Nov. 9th)",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-09",
+          "link": "https://www.gradescope.com/courses/1406963/assignments/8970420/",
+          "source_id": "site-fd3a7e5fc898afb8",
+          "title": "The Q1 Project report checkpoint (Report and Code) is due on",
+          "type": "Homework"
         }
       ],
       "method": "parser",
-      "page_hash": "c88c3a45c18db30c"
+      "page_hash": "7e66f4d299926a01"
     }
   },
   "synced": {
@@ -165,6 +181,13 @@
       "due": "bf044a2c29d5517b",
       "link": "5b61f795210f769d",
       "title": "71a348a155b5eee9",
+      "type": "0d92efc326d7e429"
+    },
+    "736c934fb9f38400": {
+      "course": "873f55418840b67f",
+      "due": "d66834b1e2633b31",
+      "link": "83036cbe90f3c1a4",
+      "title": "25aed9f298becd2c",
       "type": "0d92efc326d7e429"
     },
     "7533f03e590f64c8": {
@@ -242,6 +265,13 @@
       "due": "86009cc361823fe7",
       "link": "d6d45e9af360e518",
       "title": "852c6a3aa813f806",
+      "type": "0d92efc326d7e429"
+    },
+    "c89682edc0509f28": {
+      "course": "873f55418840b67f",
+      "due": "d66834b1e2633b31",
+      "link": "5a11cd35f4752d9d",
+      "title": "4f19a66233038a88",
       "type": "0d92efc326d7e429"
     },
     "d970c2ed8083d22e": {
