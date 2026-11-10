@@ -113,10 +113,18 @@
           "source_id": "site-fd3a7e5fc898afb8",
           "title": "The Q1 Project report checkpoint (Report and Code) is due on",
           "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-16",
+          "link": "https://dsc-capstone.org/2026-27/assignments/methodology/06",
+          "source_id": "site-ed3e867f67752a37",
+          "title": "Environments and Containerization (MA 5 due Nov 16th)",
+          "type": "Homework"
         }
       ],
       "method": "parser",
-      "page_hash": "d8fba0a7beef1d21"
+      "page_hash": "6b4581a5b4517cc3"
     }
   },
   "synced": {
@@ -314,6 +322,13 @@
       "due": "7aa86fb75bec8ea5",
       "link": "0e84bc16354cfccc",
       "title": "bd235430fba3393e",
+      "type": "0d92efc326d7e429"
+    },
+    "f9c55bc0f801ea7f": {
+      "course": "873f55418840b67f",
+      "due": "af40659fc9f7a95a",
+      "link": "6f604f4a8a8aea44",
+      "title": "5f83719926412895",
       "type": "0d92efc326d7e429"
     },
     "fc22e7143ce4de8b": {
