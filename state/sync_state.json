@@ -137,10 +137,58 @@
           "source_id": "site-6749ce5d14affa2b",
           "title": "TA Checkin for Weeks 8/9. Be ready to pitch your proposal for the Q2 project.",
           "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-23",
+          "link": "https://dsc-capstone.org/2026-27/lessons/05",
+          "source_id": "site-7ddc4cb0ef6bdadd",
+          "title": "Ethics and Values",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-30",
+          "link": "https://dsc-capstone.org/2026-27/assignments/methodology/03",
+          "source_id": "site-d2eba9fba1228879",
+          "title": "MA 7 (due Nov. 30th)",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-12-04",
+          "link": "https://dsc-capstone.org/2026-27/",
+          "source_id": "site-f9938925d3534095",
+          "title": "Remember that final submissions for Q1 project and Q2 proposal are due by Dec 4th",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-11-27",
+          "link": "https://dsc-capstone.org/2026-27/lessons/09",
+          "source_id": "site-dfd0b73d204c78e4",
+          "title": "Project Management",
+          "type": "Reading"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-12-04",
+          "link": "https://dsc-capstone.org/2026-27/",
+          "source_id": "site-6a1e05ce7c3fea55",
+          "title": "Work on your Q1 project and Q2 project proposal (Due by Dec 4th)",
+          "type": "Homework"
+        },
+        {
+          "course": "DSC Capstone",
+          "due": "2026-12-07",
+          "link": "https://dsc-capstone.org/2026-27/",
+          "source_id": "site-10a2e3c4def14fbc",
+          "title": "Submit your Q1 project as well as the Q2 project proposal (By 11.59pm, Friday, Dec 4th)",
+          "type": "Homework"
         }
       ],
       "method": "parser",
-      "page_hash": "819e09ef21244277"
+      "page_hash": "67fc3d3ab2ac4504"
     }
   },
   "synced": {
@@ -153,7 +201,7 @@
     },
     "055f23a6bc43500e": {
       "course": "4e525803f44db8f1",
-      "due": "e90c73e27bd79b14",
+      "due": "7aa86fb75bec8ea5",
       "link": "2d154d220a46db3d",
       "title": "2fa8a176940a30c8",
       "type": "0d92efc326d7e429"
@@ -172,6 +220,20 @@
       "title": "500d640716e20cc7",
       "type": "0d92efc326d7e429"
     },
+    "1f8e4113d91b7576": {
+      "course": "873f55418840b67f",
+      "due": "1630c263a1ca99d2",
+      "link": "770c693607a99eb1",
+      "title": "58a34ff5ee9e7f08",
+      "type": "463816d07097e1a7"
+    },
+    "2292dcfa9dff7126": {
+      "course": "873f55418840b67f",
+      "due": "e90c73e27bd79b14",
+      "link": "422244d67830b925",
+      "title": "858e705d334dc62d",
+      "type": "0d92efc326d7e429"
+    },
     "322b61a908d6b783": {
       "course": "f11de8fee557a13a",
       "due": "146a623ac4a80121",
@@ -179,11 +241,25 @@
       "title": "2cc55768fb9ebb77",
       "type": "0d92efc326d7e429"
     },
+    "3d0ca62031505c2c": {
+      "course": "873f55418840b67f",
+      "due": "f09b63beda3ca17a",
+      "link": "cfbc9e6daae34b84",
+      "title": "b5e390e0ce8129a0",
+      "type": "463816d07097e1a7"
+    },
     "3de95f96d234e9bf": {
       "course": "f11de8fee557a13a",
       "due": "7491dd33aafb5e7c",
       "link": "846279a1558a5afb",
       "title": "79cf0befd47e6651",
+      "type": "0d92efc326d7e429"
+    },
+    "44800254ef541411": {
+      "course": "873f55418840b67f",
+      "due": "b90a0e1b6b84f3d9",
+      "link": "422244d67830b925",
+      "title": "4f7e44b80ce1d17d",
       "type": "0d92efc326d7e429"
     },
     "5d9abcf6ae7b3331": {
@@ -228,6 +304,13 @@
       "title": "257df3543b8a7a69",
       "type": "0d92efc326d7e429"
     },
+    "88bfa7a246f1c0db": {
+      "course": "873f55418840b67f",
+      "due": "e0b7c44611a45c9d",
+      "link": "28a1fe97d317af1f",
+      "title": "8dbfa32c92769548",
+      "type": "0d92efc326d7e429"
+    },
     "8e240f165cabacaf": {
       "course": "f11de8fee557a13a",
       "due": "3efe4bf19de852e6",
@@ -239,7 +322,7 @@
       "course": "4e525803f44db8f1",
       "due": "5aa6a647a19bb785",
       "link": "a0edd55c27dacfe2",
-      "title": "b1371483e7cc4ac6",
+      "title": "88e619abd52c9a2e",
       "type": "03aa7dc16797a82b"
     },
     "9b88a4a012fb3328": {
@@ -331,6 +414,13 @@
       "due": "7aa86fb75bec8ea5",
       "link": "07cf1b8f03d2c0cb",
       "title": "1e5594b712d000b5",
+      "type": "0d92efc326d7e429"
+    },
+    "e83e2efe04c01aa2": {
+      "course": "873f55418840b67f",
+      "due": "e90c73e27bd79b14",
+      "link": "422244d67830b925",
+      "title": "031eb48f00da69d3",
       "type": "0d92efc326d7e429"
     },
     "ea6d499851d1ade1": {
